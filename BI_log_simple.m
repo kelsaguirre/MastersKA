@@ -24,27 +24,6 @@ if lambda1<=1/3 || lambda1>=1 %is this correct?
     llikelihood=ones(1,n_blocks)*1000;
 else
 
-% %pars = [alpha,beta,th1,th2];
-% alpha = pars(1); 
-% beta = pars(2);
-% if alpha<=0 || beta<=0 || alpha>=upperbound || beta>=upperbound
-%     hlikelihood=ones(1,n_blocks)*1000;
-%     llikelihood=ones(1,n_blocks)*1000;
-% elseif pars(3)<1/3 || pars(3)>1
-%     hlikelihood=ones(1,n_blocks)*1000;
-%     llikelihood=ones(1,n_blocks)*1000;
-% elseif pars(4)<1/3 || pars(4)>1
-%     hlikelihood=ones(1,n_blocks)*1000;
-%     llikelihood=ones(1,n_blocks)*1000;
-% else
-%     th1=abs(pars(4)-pars(3));
-%     th2=pars(3);
-%     if pars(4)<pars(3)
-%         eta=0;
-%     else
-%         eta=1;
-%     end
-
     for iB = 1:n_blocks
         slotprior{iB}=ones(n_trials,n_slots)/n_slots;
     end
@@ -106,7 +85,6 @@ else
                 hlikelihood(iB)=hlikelihood(iB)+errors(iB);
                 llikelihood(iB)=llikelihood(iB)+ min(3, abs(log(distro(choices(iT)))));
     
-                %to keep it moving?
                 choice_selections=choice_selections+1;
             end
     
@@ -122,5 +100,4 @@ else
     end
 end
 
-%optimallinerrors = optimallinerrors ;
 sum_likelihood = sum(llikelihood) ; 
