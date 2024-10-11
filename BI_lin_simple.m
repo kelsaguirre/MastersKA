@@ -1,28 +1,14 @@
 function [sum_likelihood] = BI_lin_simple(pars, data)
-%replaced data w ~, not sure what that does - went back todata
 
 n_blocks=4;
 n_slots=3;
 n_trials=length(data{1}(:,1));
-
-%will it work without these?
 start_trial=2;
 choice_selections=0;
-
-%need the lambda here 
-%lambda cant be less than 1/3 or 1/3 or more than 1
-
-% data_folder = '/Users/kelseyaguirre/Smith Group Dropbox/Kelsey Aguirre/OCD_DBS_Study/Slot_bytime/baseline';
-% data = data_folder;
-% optimallambda = zeros(n_subjects,2);
-% optimallogerrors = zeros(n_subjects,2);
 
 hlikelihood = zeros(1,n_blocks);
 llikelihood = zeros(1,n_blocks);
 
-%lambda1 = 0.8;
-
-%pars = lambda1;
 lambda1 = pars(1); 
 if lambda1<=1/3 || lambda1>=1 %is this correct?
     hlikelihood=ones(1,n_blocks)*1000;
@@ -99,10 +85,4 @@ else
     end
     
 end
-    %I was going through subjects, vf is doing block and then trial 
-    
-    %end of block
-
-
-%optimallinerrors = optimallinerrors ;
 sum_likelihood = sum(hlikelihood) ; 
