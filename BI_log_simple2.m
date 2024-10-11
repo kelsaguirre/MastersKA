@@ -10,42 +10,18 @@ expected_n_trials=length(internalCellArray{1,1}(:,3));
 %storing number of total choices for each subject
 actual_n_trials = 0; %for BIC score
 
-%will it work without these?
 start_trial=2;
 choice_selections=0;
 
 hlikelihood = zeros(1,n_blocks);
 llikelihood = zeros(1,n_blocks);
 
-%lambda1 = 0.8;
-
-%pars = lambda1;
 lambda1 = pars(1); 
 if lambda1<=1/3 || lambda1>=1 %is this correct?
     hlikelihood=ones(1,n_blocks)*1000;
     llikelihood=ones(1,n_blocks)*1000;
 else
 
-% %pars = [alpha,beta,th1,th2];
-% alpha = pars(1); 
-% beta = pars(2);
-% if alpha<=0 || beta<=0 || alpha>=upperbound || beta>=upperbound
-%     hlikelihood=ones(1,n_blocks)*1000;
-%     llikelihood=ones(1,n_blocks)*1000;
-% elseif pars(3)<1/3 || pars(3)>1
-%     hlikelihood=ones(1,n_blocks)*1000;
-%     llikelihood=ones(1,n_blocks)*1000;
-% elseif pars(4)<1/3 || pars(4)>1
-%     hlikelihood=ones(1,n_blocks)*1000;
-%     llikelihood=ones(1,n_blocks)*1000;
-% else
-%     th1=abs(pars(4)-pars(3));
-%     th2=pars(3);
-%     if pars(4)<pars(3)
-%         eta=0;
-%     else
-%         eta=1;
-%     end
 
     for iB = 1:n_blocks
         slotprior{iB}=ones(expected_n_trials,n_slots)/n_slots;
@@ -132,15 +108,6 @@ else
     %end of blocks
     end
     %actual_n_trials=actual_n_trials+length(choices(:,1)); 
-    % got me to 60 trials
 end
-
-%optimallinerrors = optimallinerrors ;
-%save actual trials or pull from structure
-%he calcs when he does choice confidence
-%take optiized val and run and in the model 
-%trial by trial choice probability
-%model estimation should match-ish over 
-%add valid trials and the BIC score
 
 sum_likelihood = sum(llikelihood) ; 
