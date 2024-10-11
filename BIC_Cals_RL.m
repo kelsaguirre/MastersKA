@@ -1,5 +1,3 @@
-clear all
-%adding the way VF pulls functions w/out putting them in the data folder
 data_folder= '/Users/kelseyaguirre/Smith Group Dropbox/Kelsey Aguirre/AguirreWork/Slot_bytime/Baseline';
 root_folder = '/Users/kelseyaguirre/Smith Group Dropbox/Kelsey Aguirre/AguirreWork/code/reinforcement_learning';
 addpath('/Users/kelseyaguirre/Smith Group Dropbox/Kelsey Aguirre/AguirreWork/code/reinforcement_learning')
